@@ -1,26 +1,39 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <navbar-component
+    :pages="pages"
+    :active-page="activePage"
+    :change-link="changeLink"
+  ></navbar-component>
+  <page-component :page="pages[activePage]"></page-component>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import NavbarComponent from "@/components/NavbarComponent.vue";
+import PageComponent from "@/components/PageComponent.vue";
 
 export default {
-  name: "App",
   components: {
-    HelloWorld,
+    NavbarComponent,
+    PageComponent,
+  },
+  created() {
+    this.getPages();
+  },
+  data() {
+    return {
+      activePage: 0,
+      // useDarkNavbar: true,
+      pages: [],
+    };
+  },
+  methods: {
+    changeLink(index) {
+      this.activePage = index;
+    },
+    async getPages() {
+      const pages = await fetch("pages.json");
+      this.pages = await pages.json();
+    },
   },
 };
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

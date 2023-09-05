@@ -1,0 +1,17 @@
+[
+  {
+    "pageTitle": "Welcome, to Vue!",
+    "content": "Journey to frontend framework.",
+    "link": { "title": "Home", "url": "index.html" }
+  },
+  {
+    "pageTitle": "Hi, this is about me!",
+    "content": "My name is Nouval Rizky",
+    "link": { "title": "About", "url": "about.html" }
+  },
+  {
+    "pageTitle": "This is my Contact!",
+    "content": "See my Instagram profile @nouvalrz",
+    "link": { "title": "Contact", "url": "contact.html" }
+  }
+]
